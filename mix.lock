@@ -1,0 +1,9 @@
+%{"cf": {:git, "https://github.com/project-fifo/cf", "8a113805bdfd7d9f2aba712f5035567ecb38a129", [tag: "0.2.0"]},
+  "earmark": {:hex, :earmark, "1.0.3", "89bdbaf2aca8bbb5c97d8b3b55c5dd0cff517ecc78d417e87f1d0982e514557b", [:mix], []},
+  "erlware_commons": {:git, "https://github.com/erlware/erlware_commons.git", "e76dd80a1e9e043d4c33cfd8121a1dd823cd5aa1", []},
+  "ex_doc": {:git, "https://github.com/elixir-lang/ex_doc.git", "5f6005adc3eb758399d92c48ba43fc683a6a9725", []},
+  "finder": {:git, "https://github.com/h4cc/Finder.git", "ece40d59a640000a78352b083ae8bdb87debcda6", []},
+  "pattern_tap": {:git, "https://github.com/mgwidmann/elixir-pattern_tap.git", "37eb49a3b21daf165d491f77beefb665d81b2329", []},
+  "temp": {:hex, :temp, "0.4.1", "5e8a0fa2013837b4bbe7ae8bd613c1d44879250e72026564ecae53cedab4fdd6", [:mix], []},
+  "tempfile": {:git, "https://github.com/lowks/tempfile.git", "c076978da38536fba89fb9ec9db6067b31b32120", []},
+  "termcap": {:hex, :termcap, "0.1.0", "45977f01b28e8c8d56e270e5233634515eaacef9aa701afa9adb3bf5c2793990", [:rebar3], []}}
