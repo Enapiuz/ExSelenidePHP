@@ -13,7 +13,6 @@ defmodule ExSelenidePHP.DSL do
 
   defmacro test(name, do: action) do
     quote do
-      # IO.puts """
       IO.puts "<?php"
       IO.puts ""
       IO.puts "use Selenide\\By;"
