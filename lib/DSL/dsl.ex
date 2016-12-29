@@ -1,26 +1,31 @@
 defmodule ExSelenidePHP.DSL do
-  require IEx
+  defmacro open(url) do
+    quote bind_quoted: [url: url] do
+      IO.puts "        $this->selenide()->open('#{url}');"
+    end
+  end
 
-  def open(url) do
-      "$this->selenide()->open('#{url}');"
+  defmacro click(locatorType, locator) do
+    quote bind_quoted: [locatorType: locatorType, locator: locator] do
+      IO.puts "        $this->selenide()->find(By::#{locatorType}(\"#{locator}\"))->click();"
+    end
   end
 
   defmacro test(name, do: action) do
-      quote do
-        IO.puts """
-        <?php
-
-        use Selenide\\By;
-        use Selenide\\Condition;
-
-        class #{unquote(name)}
-        {
-            function test#{unquote(name)}
-            {
-                #{unquote(action)}
-            }
-        }
-        """
-      end
+    quote do
+      # IO.puts """
+      IO.puts "<?php"
+      IO.puts ""
+      IO.puts "use Selenide\\By;"
+      IO.puts "use Selenide\\Condition;"
+      IO.puts ""
+      IO.puts "class #{unquote(name)}Test extends Testing_SeleniumTestCase"
+      IO.puts "{"
+      IO.puts "    function test#{unquote(name)}"
+      IO.puts "    {"
+      unquote action
+      IO.puts "    }"
+      IO.puts "}"
+    end
   end
 end
