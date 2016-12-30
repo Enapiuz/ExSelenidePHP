@@ -11,3 +11,7 @@ test "UsernameSaving" do
   assert_value :id, "username", "PewUser"
   assert_text :css, ".title", "Settings"
 end
+
+test "Something" do
+  prepare_user :asdasd
+end

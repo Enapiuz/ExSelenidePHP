@@ -32,18 +32,12 @@ defmodule ExSelenidePHP.DSL do
 
   defmacro test(name, do: action) do
     quote do
-      IO.puts "<?php"
       IO.puts ""
-      IO.puts "use Selenide\\By;"
-      IO.puts "use Selenide\\Condition;"
       IO.puts ""
-      IO.puts "class #{unquote(name)}Test extends Testing_SeleniumTestCase"
-      IO.puts "{"
       IO.puts "    function test#{unquote(name)}"
       IO.puts "    {"
       unquote action
       IO.puts "    }"
-      IO.puts "}"
     end
   end
 end

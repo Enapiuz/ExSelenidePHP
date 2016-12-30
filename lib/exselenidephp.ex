@@ -5,15 +5,22 @@ defmodule ExSelenidePHP do
     generators_dir = "generators"
     results_dir = "results"
 
-    files = File.ls!(generators_dir)
     for file <- File.ls!(generators_dir),
       path = Path.join(generators_dir, file),
       File.regular?(path) do
-        execute_me = fn ->
+        captured = capture_io fn ->
+          IO.puts "<?php"
+          IO.puts ""
+          IO.puts "use Selenide\\By;"
+          IO.puts "use Selenide\\Condition;"
+          IO.puts "use QA\\Obj_User;"
+          IO.puts ""
+          IO.puts "class #{Path.basename(path, ".exs")} extends Testing_SeleniumTestCase"
+          IO.puts "{"
           Code.eval_file path
+          IO.puts "}"
         end
 
-        captured = capture_io(execute_me)
         result_filename = "#{Path.basename(path, "exs")}php"
         File.write! Path.join(results_dir, result_filename), captured
     end
