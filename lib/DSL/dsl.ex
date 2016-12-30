@@ -11,6 +11,25 @@ defmodule ExSelenidePHP.DSL do
     end
   end
 
+  defmacro set(locatorType, locator, value) do
+    quote bind_quoted: [locatorType: locatorType, locator: locator, value: value] do
+      # TODO: escape value quotes
+      IO.puts "        $this->selenide()->find(By::#{locatorType}(\"#{locator}\"))->setValue(\"#{value}\");"
+    end
+  end
+
+  defmacro assert_value(locatorType, locator, value) do
+    quote bind_quoted: [locatorType: locatorType, locator: locator, value: value] do
+      IO.puts "        $this->selenide()->find(By::#{locatorType}(\"#{locator}\"))->assert(Condotion::value(\"#{value}\"));"
+    end
+  end
+
+  defmacro assert_text(locatorType, locator, value) do
+    quote bind_quoted: [locatorType: locatorType, locator: locator, value: value] do
+      IO.puts "        $this->selenide()->find(By::#{locatorType}(\"#{locator}\"))->assert(Condotion::text(\"#{value}\"));"
+    end
+  end
+
   defmacro test(name, do: action) do
     quote do
       IO.puts "<?php"
