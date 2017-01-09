@@ -1,13 +1,14 @@
 import ExSelenidePHP.CaptureIO
 
 defmodule ExSelenidePHP do
-  def main(args \\ System.argv) do
+  def main(_args \\ System.argv) do
     generators_dir = "generators"
     results_dir = "results"
 
     for file <- File.ls!(generators_dir),
       path = Path.join(generators_dir, file),
       File.regular?(path) do
+        IO.puts "Start compiling test \"#{path}\"..."
         captured = capture_io fn ->
           IO.puts "<?php"
           IO.puts ""
@@ -24,5 +25,6 @@ defmodule ExSelenidePHP do
         result_filename = "#{Path.basename(path, "exs")}php"
         File.write! Path.join(results_dir, result_filename), captured
     end
+    IO.puts "Done"
   end
 end

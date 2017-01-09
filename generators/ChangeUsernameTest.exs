@@ -2,7 +2,7 @@ import ExSelenidePHP.DSL
 import ExSelenidePHP.DSL.Specific
 
 test "UsernameSaving" do
-  prepare_user(:new_user)
+  prepare_user :new_user
   login :new_user
   open "/profile"
   click :xpath, "text()='Settings'"
